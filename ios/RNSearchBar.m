@@ -18,11 +18,19 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher
 {
+#if (TARGET_OS_TV)
+    _eventDispatcher = eventDispatcher;
+    self.delegate = self;
+    return self;
+    
+#else
     if ((self = [super initWithFrame:CGRectMake(0, 0, 1000, 44)])) {
         _eventDispatcher = eventDispatcher;
         self.delegate = self;
     }
     return self;
+    
+#endif
 }
 
 - (void) searchBarTextDidEndEditing:(UISearchBar *)searchBar
@@ -38,8 +46,9 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+#if !(TARGET_OS_TV)
     [self setShowsCancelButton:self._jsShowsCancelButton animated:YES];
-    
+#endif
     
     [_eventDispatcher sendTextEventWithType:RCTTextEventTypeFocus
                                    reactTag:self.reactTag
@@ -73,7 +82,9 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 {
     self.text = @"";
     [self resignFirstResponder];
+#if !(TARGET_OS_TV)
     [self setShowsCancelButton:NO animated:YES];
+#endif
     
     self.onCancelButtonPress(@{});
 }

@@ -5,6 +5,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTUIManager.h>
 
+#if !(TARGET_OS_TV)
 @implementation RCTConvert (UIBarStyle)
 RCT_ENUM_CONVERTER(UIBarStyle, (@{
                                   @"default": @(UIBarStyleDefault),
@@ -12,6 +13,7 @@ RCT_ENUM_CONVERTER(UIBarStyle, (@{
                                   }),
                    UIBarStyleDefault, integerValue)
 @end
+#endif
 
 @implementation RCTConvert (UISearchBarStyle)
 RCT_ENUM_CONVERTER(UISearchBarStyle, (@{
@@ -53,7 +55,9 @@ RCT_EXPORT_VIEW_PROPERTY(text, NSString)
 RCT_CUSTOM_VIEW_PROPERTY(showsCancelButton, BOOL, RNSearchBar)
 {
     BOOL value = [RCTConvert BOOL:json];
+#if !(TARGET_OS_TV)
     view.showsCancelButton = value;
+#endif
 }
 RCT_EXPORT_VIEW_PROPERTY(barTintColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(tintColor, UIColor)
@@ -114,9 +118,11 @@ RCT_CUSTOM_VIEW_PROPERTY(textFieldBackgroundColor, UIColor, RNSearchBar)
 //based on http://stackoverflow.com/questions/19048766/
 RCT_CUSTOM_VIEW_PROPERTY(textColor, UIColor, RNSearchBar)
 {
+#if !(TARGET_OS_TV)
     if([RCTConvert UIColor:json]) {
         [[UITextField appearanceWhenContainedIn:[RNSearchBar class], nil] setDefaultTextAttributes:@{NSForegroundColorAttributeName:[RCTConvert UIColor:json]}];
     }
+#endif
 }
 
 - (NSDictionary *)constantsToExport
@@ -184,16 +190,18 @@ RCT_EXPORT_METHOD(clearText:(nonnull NSNumber *)reactTag)
 
 RCT_EXPORT_METHOD(toggleCancelButton:(nonnull NSNumber *)reactTag  flag:(BOOL *)flag)
 {
-  [self.bridge.uiManager addUIBlock:
-   ^(__unused RCTUIManager *uiManager, NSDictionary *viewRegistry){
-       RNSearchBar *searchBar = viewRegistry[reactTag];
-
-       if ([searchBar isKindOfClass:[RNSearchBar class]]) {
-           [searchBar setShowsCancelButton:flag ? YES : NO animated:YES];
-       } else {
-           RCTLogError(@"Cannot toggle: %@ (tag #%@) is not RNSearchBar", searchBar, reactTag);
-       }
-   }];
+    [self.bridge.uiManager addUIBlock:
+     ^(__unused RCTUIManager *uiManager, NSDictionary *viewRegistry){
+         RNSearchBar *searchBar = viewRegistry[reactTag];
+         
+#if !(TARGET_OS_TV)
+         if ([searchBar isKindOfClass:[RNSearchBar class]]) {
+             [searchBar setShowsCancelButton:flag ? YES : NO animated:YES];
+         } else {
+             RCTLogError(@"Cannot toggle: %@ (tag #%@) is not RNSearchBar", searchBar, reactTag);
+         }
+#endif
+     }];
 }
 
 @end

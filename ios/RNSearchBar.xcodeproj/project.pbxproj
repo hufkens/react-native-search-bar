@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5F8F61D22B793BA00BB2CF9 /* RNSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFA905C1B2CEF51005BA332 /* RNSearchBar.m */; };
+		B5F8F61E22B793BA00BB2CF9 /* RNSearchBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFA905E1B2CEF51005BA332 /* RNSearchBarManager.m */; };
 		FEFA905F1B2CEF51005BA332 /* RNSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFA905C1B2CEF51005BA332 /* RNSearchBar.m */; };
 		FEFA90601B2CEF51005BA332 /* RNSearchBarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFA905E1B2CEF51005BA332 /* RNSearchBarManager.m */; };
 /* End PBXBuildFile section */
@@ -21,10 +23,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B5F8F62022B793BA00BB2CF9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNSearchBar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNSearchBar.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5F8F62422B793BA00BB2CF9 /* libRNSearchBar-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRNSearchBar-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEFA905B1B2CEF51005BA332 /* RNSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSearchBar.h; sourceTree = "<group>"; };
 		FEFA905C1B2CEF51005BA332 /* RNSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSearchBar.m; sourceTree = "<group>"; };
 		FEFA905D1B2CEF51005BA332 /* RNSearchBarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSearchBarManager.h; sourceTree = "<group>"; };
@@ -33,6 +45,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		58B511D81A9E6C8500147676 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5F8F61F22B793BA00BB2CF9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,6 +77,7 @@
 				FEFA905D1B2CEF51005BA332 /* RNSearchBarManager.h */,
 				FEFA905E1B2CEF51005BA332 /* RNSearchBarManager.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				B5F8F62422B793BA00BB2CF9 /* libRNSearchBar-tvOS.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +101,23 @@
 			productReference = 134814201AA4EA6300B7C361 /* libRNSearchBar.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		B5F8F61B22B793BA00BB2CF9 /* RNSearchBar-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5F8F62122B793BA00BB2CF9 /* Build configuration list for PBXNativeTarget "RNSearchBar-tvOS" */;
+			buildPhases = (
+				B5F8F61C22B793BA00BB2CF9 /* Sources */,
+				B5F8F61F22B793BA00BB2CF9 /* Frameworks */,
+				B5F8F62022B793BA00BB2CF9 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RNSearchBar-tvOS";
+			productName = RCTDataManager;
+			productReference = B5F8F62422B793BA00BB2CF9 /* libRNSearchBar-tvOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -100,6 +137,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -108,6 +146,7 @@
 			projectRoot = "";
 			targets = (
 				58B511DA1A9E6C8500147676 /* RNSearchBar */,
+				B5F8F61B22B793BA00BB2CF9 /* RNSearchBar-tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -119,6 +158,15 @@
 			files = (
 				FEFA905F1B2CEF51005BA332 /* RNSearchBar.m in Sources */,
 				FEFA90601B2CEF51005BA332 /* RNSearchBarManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5F8F61C22B793BA00BB2CF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F8F61D22B793BA00BB2CF9 /* RNSearchBar.m in Sources */,
+				B5F8F61E22B793BA00BB2CF9 /* RNSearchBarManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +279,40 @@
 			};
 			name = Release;
 		};
+		B5F8F62222B793BA00BB2CF9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../React/**",
+					"$(SRCROOT)/../../node_modules/react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B5F8F62322B793BA00BB2CF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../React/**",
+					"$(SRCROOT)/../../node_modules/react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -248,6 +330,15 @@
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,
 				58B511F11A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5F8F62122B793BA00BB2CF9 /* Build configuration list for PBXNativeTarget "RNSearchBar-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5F8F62222B793BA00BB2CF9 /* Debug */,
+				B5F8F62322B793BA00BB2CF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
